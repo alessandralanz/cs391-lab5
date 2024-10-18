@@ -16,5 +16,5 @@ export async function createNewPost(
   const postCollection = await getCollection("post-collection");
   const res = await postCollection.insertOne(p);
 
-  return res.acknowledged ? p : null;
+  return res.acknowledged ? { ...p, id: res.insertedId.toHexString() } : null;
 }

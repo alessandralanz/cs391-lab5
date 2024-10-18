@@ -18,7 +18,7 @@ export default function DisplayAllPosts({
       return false;
     }
 
-    setPosts([p, ...posts]);
+    setPosts([...posts, p]);
     return true;
   }
 

@@ -1,6 +1,8 @@
 import DisplayAllPosts from "@/components/display-all-posts";
 import { getAllPosts } from "@/lib/getAllPosts";
 
+export const fetchCache = "force-no-store";
+
 export default async function Home() {
   const posts = await getAllPosts();
 
