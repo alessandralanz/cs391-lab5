@@ -1,15 +1,14 @@
-"use client";
-import { useState } from "react";
+import PostPreview from "@/components/post-preview";
 
 export default function Home() {
-  const [name, setName] = useState("");
   return (
     <div className="flex flex-col items-center bg-blue-200 p-4">
-      <h3 className="font-medium text-2xl">Hi {name}</h3>
-      <input
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value);
+      <PostPreview
+        post={{
+          title: "demo post",
+          content: "lalalalala",
+          upvotes: 20,
+          downvotes: 4,
         }}
       />
     </div>
