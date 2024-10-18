@@ -1,4 +1,3 @@
-"use client";
 import { PostProps } from "@/types";
 
 export default function PostPreview({ post }: { post: PostProps }) {
