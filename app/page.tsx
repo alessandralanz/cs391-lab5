@@ -5,6 +5,7 @@ export default function Home() {
     <div className="flex flex-col items-center bg-blue-200 p-4">
       <PostPreview
         post={{
+          id: "id",
           title: "demo post",
           content: "lalalalala",
           upvotes: 20,
