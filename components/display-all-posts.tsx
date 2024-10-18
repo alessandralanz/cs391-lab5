@@ -3,7 +3,7 @@ import { PostProps } from "@/types";
 import { useState } from "react";
 import PostPreview from "./post-preview";
 import NewPost from "./new-post";
-import createNewPost from "@/lib/createNewPost";
+import { createNewPost } from "@/lib/createNewPost";
 
 export default function DisplayAllPosts({
   inputPosts,

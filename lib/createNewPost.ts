@@ -1,6 +1,8 @@
+"use server";
+import getCollection from "@/db";
 import { PostProps } from "@/types";
 
-export default async function createNewPost(
+export async function createNewPost(
   title: string,
   content: string,
 ): Promise<PostProps | null> {
@@ -10,7 +12,9 @@ export default async function createNewPost(
     upvotes: 0,
     downvotes: 0,
   };
-  // insert into db (this will be done next week)
 
-  return p;
+  const postCollection = await getCollection("post-collection");
+  const res = await postCollection.insertOne(p);
+
+  return res.acknowledged ? p : null;
 }
