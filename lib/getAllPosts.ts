@@ -7,6 +7,7 @@ export async function getAllPosts(): Promise<PostProps[]> {
 
   const posts: PostProps[] = data.map((post) => {
     return {
+      id: post._id.toHexString(),
       title: post.title,
       content: post.content,
       upvotes: post.upvotes,
