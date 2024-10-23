@@ -1,5 +1,5 @@
 "use server";
-import getCollection from "@/db";
+import getCollection, { POSTS_COLLECTION } from "@/db";
 import { PostProps } from "@/types";
 
 export async function createNewPost(
@@ -13,8 +13,12 @@ export async function createNewPost(
     downvotes: 0,
   };
 
-  const postCollection = await getCollection("post-collection");
+  const postCollection = await getCollection(POSTS_COLLECTION);
   const res = await postCollection.insertOne(p);
 
-  return res.acknowledged ? p : null;
+  if (!res.acknowledged) {
+    return null;
+  }
+
+  return { ...p, id: res.insertedId.toHexString() };
 }

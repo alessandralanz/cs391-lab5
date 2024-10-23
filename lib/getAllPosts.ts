@@ -1,9 +1,11 @@
-import getCollection from "@/db";
+import getCollection, { POSTS_COLLECTION } from "@/db";
 import { PostProps } from "@/types";
 
 export async function getAllPosts(): Promise<PostProps[]> {
-  const postCollection = await getCollection("post-collection");
+  const postCollection = await getCollection(POSTS_COLLECTION);
   const data = await postCollection.find().toArray();
+  const cursor = postCollection.find();
+  cursor.toArray;
 
   const posts: PostProps[] = data.map((post) => {
     return {

@@ -6,6 +6,7 @@ if (!MONGO_URI) {
 }
 
 const DB_NAME = "cs391-message-board";
+export const POSTS_COLLECTION = "posts-collection";
 
 let client: MongoClient | null = null;
 let db: Db | null = null;
@@ -18,12 +19,12 @@ async function connect(): Promise<Db> {
   return client.db(DB_NAME);
 }
 
-async function getCollection(collectionName: string): Promise<Collection> {
+export default async function getCollection(
+  collectionName: string,
+): Promise<Collection> {
   if (!db) {
     db = await connect();
   }
 
   return db.collection(collectionName);
 }
-
-export default getCollection;
