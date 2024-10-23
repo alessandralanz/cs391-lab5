@@ -1,3 +1,4 @@
+"use server";
 import { PostProps } from "@/types";
 
 export default async function createNewPost(
@@ -12,5 +13,5 @@ export default async function createNewPost(
   };
   // insert into db (this will be done next week)
 
-  return p;
+  return { ...p, id: "newId" };
 }
